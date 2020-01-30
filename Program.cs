@@ -17,6 +17,13 @@ namespace Deliverable2Conditional
             // Read the grade from standard input
             int expectedGrade = Convert.ToInt32(Console.ReadLine());
 
+            // Exit with 1 failure exit code if the user enter a number outside of acceptable values for a percentage
+            if (expectedGrade < 0 || expectedGrade > 100)
+            {
+                Console.WriteLine("Require an integer value between 0 and 100.. Exiting.");
+                Environment.Exit(1);
+            }
+
             // Create a character array with two elements
             char[] degree = new char[2];
 
@@ -48,6 +55,9 @@ namespace Deliverable2Conditional
 
             // Print a message with the result string
             Console.WriteLine("Your letter grade per the Syllabus is " + result);
+
+            // Exit with 0 success exit code
+            Environment.Exit(0);
         }
     }
 }
