@@ -15,7 +15,20 @@ namespace Deliverable2Conditional
             Console.WriteLine("What grade do you expect to get in ISM 4300?");
 
             // Read the grade from standard input
-            int expectedGrade = Convert.ToInt32(Console.ReadLine());
+            int expectedGrade = 0;
+
+            try
+            {
+                expectedGrade = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                // Handle Incorrect input type provided.
+                // Extract information from this exception, and exit
+                if (e.Source != null)
+                    Console.WriteLine("Incorrect input type provided. Ensure that an integer is provided. Exception source: {0}", e.Source);
+                Environment.Exit(1);
+            }
 
             // Exit with 1 failure exit code if the user enter a number outside of acceptable values for a percentage
             if (expectedGrade < 0 || expectedGrade > 100)
